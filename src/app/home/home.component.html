@@ -1,0 +1,38 @@
+<div class="homeMain">
+    <div class="containerMain">
+        <div class="containerLeft">
+            <h4>List of states</h4>
+            <div (click)="changeTo(listItem)" *ngFor="let listItem of statesList" class="mb listItem" [class.selected]="listItem==currentSelected.index" >
+                {{statesData[listItem]}}
+            </div>
+        </div>
+        <div class="containerRight">
+            <div class="listItem">
+                <h4>State data</h4>
+                <p> State: {{statesData[currentSelected.index]}}</p>
+                <p>population: {{theData[currentSelected.index].meta.population}}</p> 
+                <table>
+                    <thead>
+                        <tr>
+                            <th>District</th>
+                            <th>Confirmed</th>
+                            <th>Recovered</th>
+                            <th>Deaths</th>
+                            <th>Tested</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let dist of currentSelected.districts">
+                            <td>{{dist}}</td>
+                            <td>{{theData[currentSelected.index].districts[dist].total.confirmed}}</td>
+                            <td>{{theData[currentSelected.index].districts[dist].total.recovered}}</td>
+                            <td>{{theData[currentSelected.index].districts[dist].total.deceased}}</td>
+                            <td>{{theData[currentSelected.index].districts[dist].total.tested}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </div>
+        </div>
+    </div>
+</div>
